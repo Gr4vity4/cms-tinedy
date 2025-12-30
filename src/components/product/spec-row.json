@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_product_spec_rows",
+  "info": {
+    "displayName": "Spec Row",
+    "icon": "indent",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "primaryValue": {
+      "type": "string"
+    },
+    "secondaryValue": {
+      "type": "string"
+    }
+  }
+}
