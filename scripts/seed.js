@@ -239,6 +239,7 @@ async function importAuthors() {
 async function importSeedData() {
   // Allow read of application content types
   await setPublicPermissions({
+    blog: ['find', 'findOne'],
     article: ['find', 'findOne'],
     category: ['find', 'findOne'],
     author: ['find', 'findOne'],

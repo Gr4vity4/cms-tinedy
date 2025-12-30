@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_blog_paragraphs",
+  "info": {
+    "displayName": "Paragraph",
+    "icon": "align-justify",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
