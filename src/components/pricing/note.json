@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_pricing_notes",
+  "info": {
+    "displayName": "Pricing Note",
+    "icon": "info-circle",
+    "description": "Footnote for pricing table"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
