@@ -443,7 +443,16 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
-      ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
+      [
+        'about.hero',
+        'about.story-section',
+        'about.manifesto',
+        'about.mission',
+        'shared.media',
+        'shared.quote',
+        'shared.rich-text',
+        'shared.slider',
+      ]
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

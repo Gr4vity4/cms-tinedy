@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_about_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "image",
+    "description": "About page hero section"
+  },
+  "options": {},
+  "attributes": {
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "body": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

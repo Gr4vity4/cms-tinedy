@@ -1,5 +1,96 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface AboutHero extends Struct.ComponentSchema {
+  collectionName: 'components_about_heroes';
+  info: {
+    description: 'About page hero section';
+    displayName: 'Hero';
+    icon: 'image';
+  };
+  attributes: {
+    backgroundImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required;
+    body: Schema.Attribute.RichText & Schema.Attribute.Required;
+  };
+}
+
+export interface AboutManifesto extends Struct.ComponentSchema {
+  collectionName: 'components_about_manifestos';
+  info: {
+    description: 'We Clean / We Train / You Relax section';
+    displayName: 'Manifesto Section';
+    icon: 'list';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageAlt: Schema.Attribute.String;
+    items: Schema.Attribute.Component<'about.manifesto-item', true> &
+      Schema.Attribute.Required;
+  };
+}
+
+export interface AboutManifestoItem extends Struct.ComponentSchema {
+  collectionName: 'components_about_manifesto_items';
+  info: {
+    description: 'Single line in the About manifesto section';
+    displayName: 'Manifesto Item';
+    icon: 'paragraph';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    highlightColor: Schema.Attribute.Enumeration<['blue', 'yellow', 'green']> &
+      Schema.Attribute.Required;
+    highlightText: Schema.Attribute.String & Schema.Attribute.Required;
+    leadingText: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface AboutMission extends Struct.ComponentSchema {
+  collectionName: 'components_about_missions';
+  info: {
+    description: 'Mission text with supporting image';
+    displayName: 'Mission Section';
+    icon: 'flag';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageAlt: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface AboutStoryItem extends Struct.ComponentSchema {
+  collectionName: 'components_about_story_items';
+  info: {
+    description: 'Single text + image row in the about story section';
+    displayName: 'Story Item';
+    icon: 'align-left';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    eyebrow: Schema.Attribute.String & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageAlt: Schema.Attribute.String;
+    imagePosition: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface AboutStorySection extends Struct.ComponentSchema {
+  collectionName: 'components_about_story_sections';
+  info: {
+    description: 'Two-column story section on the about page';
+    displayName: 'Story Section';
+    icon: 'list';
+  };
+  attributes: {
+    items: Schema.Attribute.Component<'about.story-item', true> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface ContactSocialLink extends Struct.ComponentSchema {
   collectionName: 'components_contact_social_links';
   info: {
@@ -237,6 +328,12 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'about.hero': AboutHero;
+      'about.manifesto': AboutManifesto;
+      'about.manifesto-item': AboutManifestoItem;
+      'about.mission': AboutMission;
+      'about.story-item': AboutStoryItem;
+      'about.story-section': AboutStorySection;
       'contact.social-link': ContactSocialLink;
       'faq.answer-row': FaqAnswerRow;
       'faq.item': FaqItem;
