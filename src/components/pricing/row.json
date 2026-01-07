@@ -16,19 +16,19 @@
       "required": true
     },
     "once": {
-      "type": "integer",
+      "type": "string",
       "required": true
     },
     "twice": {
-      "type": "integer",
+      "type": "string",
       "required": true
     },
     "fourTimes": {
-      "type": "integer",
+      "type": "string",
       "required": true
     },
     "eightTimes": {
-      "type": "integer",
+      "type": "string",
       "required": true
     }
   }
