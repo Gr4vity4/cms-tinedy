@@ -27,6 +27,32 @@
       }
     ]
   },
+  "contact": {
+    "phone": "083 010 9346",
+    "email": "info_tinedy@tinedy.com",
+    "socialLinks": [
+      {
+        "label": "TIKTOK",
+        "href": "https://www.tiktok.com/",
+        "icon": "tiktok"
+      },
+      {
+        "label": "FACEBOOK",
+        "href": "https://www.facebook.com/",
+        "icon": "facebook"
+      },
+      {
+        "label": "LINE OA",
+        "href": "https://line.me/",
+        "icon": "line"
+      },
+      {
+        "label": "INSTAGRAM",
+        "href": "https://www.instagram.com/",
+        "icon": "instagram"
+      }
+    ]
+  },
   "categories": [
     {
       "name": "news",

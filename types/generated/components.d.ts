@@ -1,5 +1,22 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ContactSocialLink extends Struct.ComponentSchema {
+  collectionName: 'components_contact_social_links';
+  info: {
+    description: 'Social link shown in contact section';
+    displayName: 'Contact Social Link';
+    icon: 'link';
+  };
+  attributes: {
+    href: Schema.Attribute.String & Schema.Attribute.Required;
+    icon: Schema.Attribute.Enumeration<
+      ['tiktok', 'facebook', 'line', 'instagram']
+    > &
+      Schema.Attribute.Required;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface FaqAnswerRow extends Struct.ComponentSchema {
   collectionName: 'components_faq_answer_rows';
   info: {
@@ -138,6 +155,7 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'contact.social-link': ContactSocialLink;
       'faq.answer-row': FaqAnswerRow;
       'faq.item': FaqItem;
       'pricing.note': PricingNote;

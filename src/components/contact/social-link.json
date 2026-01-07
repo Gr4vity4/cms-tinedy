@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_contact_social_links",
+  "info": {
+    "displayName": "Contact Social Link",
+    "icon": "link",
+    "description": "Social link shown in contact section"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": ["tiktok", "facebook", "line", "instagram"],
+      "required": true
+    }
+  }
+}
