@@ -1,5 +1,32 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface FaqAnswerRow extends Struct.ComponentSchema {
+  collectionName: 'components_faq_answer_rows';
+  info: {
+    description: 'Single row in the FAQ answer list';
+    displayName: 'FAQ Answer Row';
+    icon: 'align-justify';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface FaqItem extends Struct.ComponentSchema {
+  collectionName: 'components_faq_items';
+  info: {
+    description: 'Question and its answer rows';
+    displayName: 'FAQ Item';
+    icon: 'question';
+  };
+  attributes: {
+    answerRows: Schema.Attribute.Component<'faq.answer-row', true> &
+      Schema.Attribute.Required;
+    question: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface PricingNote extends Struct.ComponentSchema {
   collectionName: 'components_pricing_notes';
   info: {
@@ -111,6 +138,8 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'faq.answer-row': FaqAnswerRow;
+      'faq.item': FaqItem;
       'pricing.note': PricingNote;
       'pricing.package': PricingPackage;
       'pricing.row': PricingRow;

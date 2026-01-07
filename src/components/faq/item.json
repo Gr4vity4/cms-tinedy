@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_faq_items",
+  "info": {
+    "displayName": "FAQ Item",
+    "icon": "question",
+    "description": "Question and its answer rows"
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "answerRows": {
+      "type": "component",
+      "repeatable": true,
+      "component": "faq.answer-row",
+      "required": true
+    }
+  }
+}
