@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "pricings",
+  "info": {
+    "singularName": "pricing",
+    "pluralName": "pricings",
+    "displayName": "Pricing",
+    "description": "Pricing packages and table rows"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "packages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pricing.package",
+      "required": true
+    },
+    "notes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pricing.note"
+    }
+  }
+}

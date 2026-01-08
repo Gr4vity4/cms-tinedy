@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_career_culture_cards",
+  "info": {
+    "displayName": "Culture Card",
+    "icon": "image",
+    "description": "Image card for the career culture section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "imageAlt": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

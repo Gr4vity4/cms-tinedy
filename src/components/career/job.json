@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_career_jobs",
+  "info": {
+    "displayName": "Job",
+    "icon": "briefcase",
+    "description": "Single job item"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "tags": {
+      "type": "component",
+      "repeatable": true,
+      "component": "career.job-tag",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_about_manifesto_items",
+  "info": {
+    "displayName": "Manifesto Item",
+    "icon": "paragraph",
+    "description": "Single line in the About manifesto section"
+  },
+  "options": {},
+  "attributes": {
+    "leadingText": {
+      "type": "string",
+      "required": true
+    },
+    "highlightText": {
+      "type": "string",
+      "required": true
+    },
+    "highlightColor": {
+      "type": "enumeration",
+      "enum": ["blue", "yellow", "green"],
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

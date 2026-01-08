@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_about_missions",
+  "info": {
+    "displayName": "Mission Section",
+    "icon": "flag",
+    "description": "Mission text with supporting image"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "imageAlt": {
+      "type": "string"
+    }
+  }
+}

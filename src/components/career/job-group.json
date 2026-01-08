@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_career_job_groups",
+  "info": {
+    "displayName": "Job Group",
+    "icon": "list",
+    "description": "Group of jobs for a team"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "jobs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "career.job",
+      "required": true
+    }
+  }
+}

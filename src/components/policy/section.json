@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_policy_sections",
+  "info": {
+    "displayName": "Policy Section",
+    "icon": "list",
+    "description": "Numbered policy section with body text and bullets"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "integer",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "bullets": {
+      "type": "component",
+      "repeatable": true,
+      "component": "policy.bullet"
+    },
+    "note": {
+      "type": "richtext"
+    }
+  }
+}

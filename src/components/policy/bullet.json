@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_policy_bullets",
+  "info": {
+    "displayName": "Policy Bullet",
+    "icon": "dot-circle",
+    "description": "Single bullet line in a policy section"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_pricing_packages",
+  "info": {
+    "displayName": "Pricing Package",
+    "icon": "chart-pie",
+    "description": "Package tab and its rows"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "rows": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pricing.row",
+      "required": true
+    }
+  }
+}

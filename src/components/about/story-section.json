@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_about_story_sections",
+  "info": {
+    "displayName": "Story Section",
+    "icon": "list",
+    "description": "Two-column story section on the about page"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "about.story-item",
+      "required": true
+    }
+  }
+}

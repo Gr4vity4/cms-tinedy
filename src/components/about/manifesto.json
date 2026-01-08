@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_about_manifestos",
+  "info": {
+    "displayName": "Manifesto Section",
+    "icon": "list",
+    "description": "We Clean / We Train / You Relax section"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "about.manifesto-item",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "imageAlt": {
+      "type": "string"
+    }
+  }
+}

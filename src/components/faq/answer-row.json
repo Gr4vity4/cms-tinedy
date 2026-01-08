@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_faq_answer_rows",
+  "info": {
+    "displayName": "FAQ Answer Row",
+    "icon": "align-justify",
+    "description": "Single row in the FAQ answer list"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

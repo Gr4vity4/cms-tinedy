@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_pricing_rows",
+  "info": {
+    "displayName": "Pricing Row",
+    "icon": "table",
+    "description": "Single row in the pricing table"
+  },
+  "options": {},
+  "attributes": {
+    "area": {
+      "type": "string",
+      "required": true
+    },
+    "hours": {
+      "type": "integer",
+      "required": true
+    },
+    "once": {
+      "type": "string",
+      "required": true
+    },
+    "twice": {
+      "type": "string",
+      "required": true
+    },
+    "fourTimes": {
+      "type": "string",
+      "required": true
+    },
+    "eightTimes": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

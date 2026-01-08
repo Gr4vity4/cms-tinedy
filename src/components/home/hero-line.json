@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_home_hero_lines",
+  "info": {
+    "displayName": "Hero Line",
+    "icon": "heading",
+    "description": "Single headline line with a highlighted word"
+  },
+  "options": {},
+  "attributes": {
+    "leadingText": {
+      "type": "string",
+      "required": true
+    },
+    "highlightText": {
+      "type": "string",
+      "required": true
+    },
+    "trailingText": {
+      "type": "string"
+    },
+    "accent": {
+      "type": "enumeration",
+      "enum": ["navy", "gold", "sage"],
+      "required": true
+    }
+  }
+}

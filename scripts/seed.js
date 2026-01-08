@@ -3,7 +3,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const mime = require('mime-types');
-const { categories, authors, articles, global, about } = require('../data/data.json');
+const { categories, authors, articles, global, about, contact } = require('../data/data.json');
 
 async function seedExampleApp() {
   const shouldImportSeedData = await isFirstRun();
@@ -148,6 +148,25 @@ async function updateBlocks(blocks) {
       // Replace the file name on the block with the actual file
       blockCopy.file = uploadedFiles;
       updatedBlocks.push(blockCopy);
+    } else if (block.__component === 'about.hero') {
+      const uploadedFiles = await checkFileExistsBeforeUpload([block.backgroundImage]);
+      const blockCopy = { ...block };
+      blockCopy.backgroundImage = uploadedFiles;
+      updatedBlocks.push(blockCopy);
+    } else if (block.__component === 'about.story-section') {
+      const items = await Promise.all(
+        block.items.map(async (item) => {
+          const uploadedFiles = await checkFileExistsBeforeUpload([item.image]);
+          return { ...item, image: uploadedFiles };
+        })
+      );
+      updatedBlocks.push({ ...block, items });
+    } else if (block.__component === 'about.manifesto') {
+      const uploadedFiles = await checkFileExistsBeforeUpload([block.image]);
+      updatedBlocks.push({ ...block, image: uploadedFiles });
+    } else if (block.__component === 'about.mission') {
+      const uploadedFiles = await checkFileExistsBeforeUpload([block.image]);
+      updatedBlocks.push({ ...block, image: uploadedFiles });
     } else if (block.__component === 'shared.slider') {
       // Get files already uploaded to Strapi or upload new files
       const existingAndUploadedFiles = await checkFileExistsBeforeUpload(block.files);
@@ -216,6 +235,17 @@ async function importAbout() {
   });
 }
 
+async function importContact() {
+  await createEntry({
+    model: 'contact',
+    entry: {
+      ...contact,
+      // Make sure it's not a draft
+      publishedAt: Date.now(),
+    },
+  });
+}
+
 async function importCategories() {
   for (const category of categories) {
     await createEntry({ model: 'category', entry: category });
@@ -244,6 +274,7 @@ async function importSeedData() {
     author: ['find', 'findOne'],
     global: ['find', 'findOne'],
     about: ['find', 'findOne'],
+    contact: ['find', 'findOne'],
   });
 
   // Create all entries
@@ -252,6 +283,7 @@ async function importSeedData() {
   await importArticles();
   await importGlobal();
   await importAbout();
+  await importContact();
 }
 
 async function main() {
