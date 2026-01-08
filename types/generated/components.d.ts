@@ -91,6 +91,45 @@ export interface AboutStorySection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlogHeading extends Struct.ComponentSchema {
+  collectionName: 'components_blog_headings';
+  info: {
+    description: '';
+    displayName: 'Heading';
+    icon: 'heading';
+  };
+  attributes: {
+    text: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface BlogImage extends Struct.ComponentSchema {
+  collectionName: 'components_blog_images';
+  info: {
+    description: '';
+    displayName: 'Image';
+    icon: 'image';
+  };
+  attributes: {
+    alt: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    variant: Schema.Attribute.Enumeration<['narrow', 'wide']> &
+      Schema.Attribute.DefaultTo<'wide'>;
+  };
+}
+
+export interface BlogParagraph extends Struct.ComponentSchema {
+  collectionName: 'components_blog_paragraphs';
+  info: {
+    description: '';
+    displayName: 'Paragraph';
+    icon: 'align-justify';
+  };
+  attributes: {
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
 export interface CareerCultureCard extends Struct.ComponentSchema {
   collectionName: 'components_career_culture_cards';
   info: {
@@ -459,6 +498,9 @@ declare module '@strapi/strapi' {
       'about.mission': AboutMission;
       'about.story-item': AboutStoryItem;
       'about.story-section': AboutStorySection;
+      'blog.heading': BlogHeading;
+      'blog.image': BlogImage;
+      'blog.paragraph': BlogParagraph;
       'career.culture-card': CareerCultureCard;
       'career.job': CareerJob;
       'career.job-group': CareerJobGroup;
