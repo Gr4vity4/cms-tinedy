@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": "Product catalog entries"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "category": {
+      "type": "enumeration",
+      "enum": ["แบรนด์ Tersano", "แบรนด์ Tinedy"],
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "sku": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "stock": {
+      "type": "integer",
+      "required": true
+    },
+    "regularPrice": {
+      "type": "decimal"
+    },
+    "discountPrice": {
+      "type": "decimal"
+    },
+    "detail": {
+      "type": "text",
+      "required": true
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "technicalInformation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "product.technical-spec-table",
+      "required": true
+    },
+    "howToUse": {
+      "type": "text"
+    },
+    "shippingAndReturns": {
+      "type": "text"
+    }
+  }
+}

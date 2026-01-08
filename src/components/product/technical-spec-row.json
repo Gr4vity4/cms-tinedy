@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_product_technical_spec_rows",
+  "info": {
+    "displayName": "Technical Spec Row",
+    "icon": "table",
+    "description": "Row in the technical specification table"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "columnOne": {
+      "type": "string",
+      "required": true
+    },
+    "columnTwo": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

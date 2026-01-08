@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_product_technical_spec_tables",
+  "info": {
+    "displayName": "Technical Spec Table",
+    "icon": "table",
+    "description": "Technical specification table for product details"
+  },
+  "options": {},
+  "attributes": {
+    "detailHeader": {
+      "type": "string",
+      "required": true
+    },
+    "columnOneHeader": {
+      "type": "string",
+      "required": true
+    },
+    "columnTwoHeader": {
+      "type": "string",
+      "required": true
+    },
+    "rows": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.technical-spec-row",
+      "required": true
+    }
+  }
+}

@@ -263,6 +263,36 @@ export interface PricingRow extends Struct.ComponentSchema {
   };
 }
 
+export interface ProductTechnicalSpecRow extends Struct.ComponentSchema {
+  collectionName: 'components_product_technical_spec_rows';
+  info: {
+    description: 'Row in the technical specification table';
+    displayName: 'Technical Spec Row';
+    icon: 'table';
+  };
+  attributes: {
+    columnOne: Schema.Attribute.String & Schema.Attribute.Required;
+    columnTwo: Schema.Attribute.String & Schema.Attribute.Required;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ProductTechnicalSpecTable extends Struct.ComponentSchema {
+  collectionName: 'components_product_technical_spec_tables';
+  info: {
+    description: 'Technical specification table for product details';
+    displayName: 'Technical Spec Table';
+    icon: 'table';
+  };
+  attributes: {
+    columnOneHeader: Schema.Attribute.String & Schema.Attribute.Required;
+    columnTwoHeader: Schema.Attribute.String & Schema.Attribute.Required;
+    detailHeader: Schema.Attribute.String & Schema.Attribute.Required;
+    rows: Schema.Attribute.Component<'product.technical-spec-row', true> &
+      Schema.Attribute.Required;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -345,6 +375,8 @@ declare module '@strapi/strapi' {
       'pricing.note': PricingNote;
       'pricing.package': PricingPackage;
       'pricing.row': PricingRow;
+      'product.technical-spec-row': ProductTechnicalSpecRow;
+      'product.technical-spec-table': ProductTechnicalSpecTable;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

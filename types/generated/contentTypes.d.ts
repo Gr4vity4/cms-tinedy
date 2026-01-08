@@ -761,6 +761,59 @@ export interface ApiPricingPricing extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiProductProduct extends Struct.CollectionTypeSchema {
+  collectionName: 'products';
+  info: {
+    description: 'Product catalog entries';
+    displayName: 'Product';
+    pluralName: 'products';
+    singularName: 'product';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<
+      [
+        '\u0E41\u0E1A\u0E23\u0E19\u0E14\u0E4C Tersano',
+        '\u0E41\u0E1A\u0E23\u0E19\u0E14\u0E4C Tinedy',
+      ]
+    > &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    detail: Schema.Attribute.Text & Schema.Attribute.Required;
+    discountPrice: Schema.Attribute.Decimal;
+    howToUse: Schema.Attribute.Text;
+    images: Schema.Attribute.Media<'images', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product.product'
+    > &
+      Schema.Attribute.Private;
+    price: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    regularPrice: Schema.Attribute.Decimal;
+    shippingAndReturns: Schema.Attribute.Text;
+    sku: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    stock: Schema.Attribute.Integer & Schema.Attribute.Required;
+    technicalInformation: Schema.Attribute.Component<
+      'product.technical-spec-table',
+      false
+    > &
+      Schema.Attribute.Required;
+    thumbnail: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
   collectionName: 'testimonials';
   info: {
@@ -1313,6 +1366,7 @@ declare module '@strapi/strapi' {
       'api::home-feature.home-feature': ApiHomeFeatureHomeFeature;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::pricing.pricing': ApiPricingPricing;
+      'api::product.product': ApiProductProduct;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
