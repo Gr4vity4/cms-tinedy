@@ -540,6 +540,43 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCareerPageCareerPage extends Struct.SingleTypeSchema {
+  collectionName: 'career_pages';
+  info: {
+    description: 'Career page content';
+    displayName: 'Career Page';
+    pluralName: 'career-pages';
+    singularName: 'career-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cultureCards: Schema.Attribute.Component<'career.culture-card', true> &
+      Schema.Attribute.Required;
+    heroImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    heroTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    introEyebrow: Schema.Attribute.String & Schema.Attribute.Required;
+    introHeading: Schema.Attribute.RichText & Schema.Attribute.Required;
+    jobGroups: Schema.Attribute.Component<'career.job-group', true> &
+      Schema.Attribute.Required;
+    jobSectionTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::career-page.career-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
@@ -1424,6 +1461,7 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
+      'api::career-page.career-page': ApiCareerPageCareerPage;
       'api::category.category': ApiCategoryCategory;
       'api::contact.contact': ApiContactContact;
       'api::contact-form.contact-form': ApiContactFormContactForm;

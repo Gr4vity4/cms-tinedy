@@ -91,6 +91,61 @@ export interface AboutStorySection extends Struct.ComponentSchema {
   };
 }
 
+export interface CareerCultureCard extends Struct.ComponentSchema {
+  collectionName: 'components_career_culture_cards';
+  info: {
+    description: 'Image card for the career culture section';
+    displayName: 'Culture Card';
+    icon: 'image';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageAlt: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface CareerJob extends Struct.ComponentSchema {
+  collectionName: 'components_career_jobs';
+  info: {
+    description: 'Single job item';
+    displayName: 'Job';
+    icon: 'briefcase';
+  };
+  attributes: {
+    tags: Schema.Attribute.Component<'career.job-tag', true> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface CareerJobGroup extends Struct.ComponentSchema {
+  collectionName: 'components_career_job_groups';
+  info: {
+    description: 'Group of jobs for a team';
+    displayName: 'Job Group';
+    icon: 'list';
+  };
+  attributes: {
+    jobs: Schema.Attribute.Component<'career.job', true> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface CareerJobTag extends Struct.ComponentSchema {
+  collectionName: 'components_career_job_tags';
+  info: {
+    description: 'Label for a job tag';
+    displayName: 'Job Tag';
+    icon: 'tag';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ContactSocialLink extends Struct.ComponentSchema {
   collectionName: 'components_contact_social_links';
   info: {
@@ -392,6 +447,10 @@ declare module '@strapi/strapi' {
       'about.mission': AboutMission;
       'about.story-item': AboutStoryItem;
       'about.story-section': AboutStorySection;
+      'career.culture-card': CareerCultureCard;
+      'career.job': CareerJob;
+      'career.job-group': CareerJobGroup;
+      'career.job-tag': CareerJobTag;
       'contact.social-link': ContactSocialLink;
       'faq.answer-row': FaqAnswerRow;
       'faq.item': FaqItem;

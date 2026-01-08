@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_career_job_tags",
+  "info": {
+    "displayName": "Job Tag",
+    "icon": "tag",
+    "description": "Label for a job tag"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

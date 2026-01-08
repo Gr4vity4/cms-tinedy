@@ -1,0 +1,50 @@
+{
+  "kind": "singleType",
+  "collectionName": "career_pages",
+  "info": {
+    "singularName": "career-page",
+    "pluralName": "career-pages",
+    "displayName": "Career Page",
+    "description": "Career page content"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroTitle": {
+      "type": "string",
+      "required": true
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "introEyebrow": {
+      "type": "string",
+      "required": true
+    },
+    "introHeading": {
+      "type": "richtext",
+      "required": true
+    },
+    "cultureCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "career.culture-card",
+      "required": true
+    },
+    "jobSectionTitle": {
+      "type": "string",
+      "required": true
+    },
+    "jobGroups": {
+      "type": "component",
+      "repeatable": true,
+      "component": "career.job-group",
+      "required": true
+    }
+  }
+}
