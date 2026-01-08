@@ -1,0 +1,110 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": "Catalog items for the product listing and detail pages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "tagline": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "sku": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "originalPrice": {
+      "type": "decimal"
+    },
+    "badge": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    },
+    "technicalSectionTitle": {
+      "type": "string"
+    },
+    "specDetailLabel": {
+      "type": "string"
+    },
+    "specPrimaryLabel": {
+      "type": "string"
+    },
+    "specSecondaryLabel": {
+      "type": "string"
+    },
+    "technicalSpecs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.spec-row"
+    },
+    "usageSectionTitle": {
+      "type": "string"
+    },
+    "usageNotes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.note"
+    },
+    "shippingSectionTitle": {
+      "type": "string"
+    },
+    "shippingNotes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.note"
+    },
+    "reviews": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.review"
+    },
+    "relatedProducts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    }
+  }
+}
