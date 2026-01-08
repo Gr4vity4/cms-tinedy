@@ -730,6 +730,37 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPolicyPagePolicyPage extends Struct.SingleTypeSchema {
+  collectionName: 'policy_pages';
+  info: {
+    description: 'Service policy page content';
+    displayName: 'Policy Page';
+    pluralName: 'policy-pages';
+    singularName: 'policy-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::policy-page.policy-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.Component<'policy.section', true> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPricingPricing extends Struct.SingleTypeSchema {
   collectionName: 'pricings';
   info: {
@@ -1365,6 +1396,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::home-feature.home-feature': ApiHomeFeatureHomeFeature;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::policy-page.policy-page': ApiPolicyPagePolicyPage;
       'api::pricing.pricing': ApiPricingPricing;
       'api::product.product': ApiProductProduct;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;

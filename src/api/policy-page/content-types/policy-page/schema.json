@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "policy_pages",
+  "info": {
+    "singularName": "policy-page",
+    "pluralName": "policy-pages",
+    "displayName": "Policy Page",
+    "description": "Service policy page content"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "sections": {
+      "type": "component",
+      "repeatable": true,
+      "component": "policy.section",
+      "required": true
+    }
+  }
+}

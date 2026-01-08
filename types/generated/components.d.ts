@@ -217,6 +217,34 @@ export interface HomeTersano extends Struct.ComponentSchema {
   };
 }
 
+export interface PolicyBullet extends Struct.ComponentSchema {
+  collectionName: 'components_policy_bullets';
+  info: {
+    description: 'Single bullet line in a policy section';
+    displayName: 'Policy Bullet';
+    icon: 'dot-circle';
+  };
+  attributes: {
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface PolicySection extends Struct.ComponentSchema {
+  collectionName: 'components_policy_sections';
+  info: {
+    description: 'Numbered policy section with body text and bullets';
+    displayName: 'Policy Section';
+    icon: 'list';
+  };
+  attributes: {
+    body: Schema.Attribute.RichText;
+    bullets: Schema.Attribute.Component<'policy.bullet', true>;
+    note: Schema.Attribute.RichText;
+    number: Schema.Attribute.Integer & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface PricingNote extends Struct.ComponentSchema {
   collectionName: 'components_pricing_notes';
   info: {
@@ -372,6 +400,8 @@ declare module '@strapi/strapi' {
       'home.product-card': HomeProductCard;
       'home.service-card': HomeServiceCard;
       'home.tersano': HomeTersano;
+      'policy.bullet': PolicyBullet;
+      'policy.section': PolicySection;
       'pricing.note': PricingNote;
       'pricing.package': PricingPackage;
       'pricing.row': PricingRow;
