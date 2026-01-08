@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_blog_headings",
+  "info": {
+    "displayName": "Heading",
+    "icon": "heading",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

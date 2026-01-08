@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_blog_images",
+  "info": {
+    "displayName": "Image",
+    "icon": "image",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "alt": {
+      "type": "string"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["narrow", "wide"],
+      "default": "wide"
+    }
+  }
+}
