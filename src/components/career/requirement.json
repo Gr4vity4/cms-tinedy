@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_career_requirements",
+  "info": {
+    "displayName": "Requirement",
+    "icon": "dot-circle",
+    "description": "Single bullet line in job requirements"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

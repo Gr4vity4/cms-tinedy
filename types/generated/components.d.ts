@@ -146,6 +146,18 @@ export interface CareerJobTag extends Struct.ComponentSchema {
   };
 }
 
+export interface CareerRequirement extends Struct.ComponentSchema {
+  collectionName: 'components_career_requirements';
+  info: {
+    description: 'Single bullet line in job requirements';
+    displayName: 'Requirement';
+    icon: 'dot-circle';
+  };
+  attributes: {
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
 export interface ContactSocialLink extends Struct.ComponentSchema {
   collectionName: 'components_contact_social_links';
   info: {
@@ -451,6 +463,7 @@ declare module '@strapi/strapi' {
       'career.job': CareerJob;
       'career.job-group': CareerJobGroup;
       'career.job-tag': CareerJobTag;
+      'career.requirement': CareerRequirement;
       'contact.social-link': ContactSocialLink;
       'faq.answer-row': FaqAnswerRow;
       'faq.item': FaqItem;

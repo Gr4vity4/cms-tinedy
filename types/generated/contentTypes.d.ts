@@ -801,6 +801,87 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiJobApplicationJobApplication
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'job_applications';
+  info: {
+    description: 'Job application submissions from the careers form';
+    displayName: 'Job Application';
+    pluralName: 'job-applications';
+    singularName: 'job-application';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    fullName: Schema.Attribute.String & Schema.Attribute.Required;
+    job: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::job-opening.job-opening'
+    > &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::job-application.job-application'
+    > &
+      Schema.Attribute.Private;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    resume: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    workHistory: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface ApiJobOpeningJobOpening extends Struct.CollectionTypeSchema {
+  collectionName: 'job_openings';
+  info: {
+    description: 'Job opening details for the careers apply page';
+    displayName: 'Job Opening';
+    pluralName: 'job-openings';
+    singularName: 'job-opening';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    applications: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::job-application.job-application'
+    >;
+    contactLineId: Schema.Attribute.Text;
+    contactNote: Schema.Attribute.String;
+    contactPhone: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::job-opening.job-opening'
+    > &
+      Schema.Attribute.Private;
+    location: Schema.Attribute.Text & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    requirements: Schema.Attribute.Component<'career.requirement', true> &
+      Schema.Attribute.Required;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
+    tags: Schema.Attribute.Component<'career.job-tag', true> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPolicyPagePolicyPage extends Struct.SingleTypeSchema {
   collectionName: 'policy_pages';
   info: {
@@ -1469,6 +1550,8 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::home-feature.home-feature': ApiHomeFeatureHomeFeature;
       'api::home-page.home-page': ApiHomePageHomePage;
+      'api::job-application.job-application': ApiJobApplicationJobApplication;
+      'api::job-opening.job-opening': ApiJobOpeningJobOpening;
       'api::policy-page.policy-page': ApiPolicyPagePolicyPage;
       'api::pricing.pricing': ApiPricingPricing;
       'api::product.product': ApiProductProduct;
