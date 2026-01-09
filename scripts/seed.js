@@ -3,7 +3,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const mime = require('mime-types');
-const { categories, authors, articles, global, about, contact } = require('../data/data.json');
+const { categories, authors, articles, global, about, contact, pricing } = require('../data/data.json');
 
 async function seedExampleApp() {
   const shouldImportSeedData = await isFirstRun();
@@ -246,6 +246,17 @@ async function importContact() {
   });
 }
 
+async function importPricing() {
+  await createEntry({
+    model: 'pricing',
+    entry: {
+      ...pricing,
+      // Make sure it's not a draft
+      publishedAt: Date.now(),
+    },
+  });
+}
+
 async function importCategories() {
   for (const category of categories) {
     await createEntry({ model: 'category', entry: category });
@@ -276,6 +287,7 @@ async function importSeedData() {
     global: ['find', 'findOne'],
     about: ['find', 'findOne'],
     contact: ['find', 'findOne'],
+    pricing: ['find', 'findOne'],
   });
 
   // Create all entries
@@ -285,6 +297,7 @@ async function importSeedData() {
   await importGlobal();
   await importAbout();
   await importContact();
+  await importPricing();
 }
 
 async function main() {

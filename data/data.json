@@ -96,6 +96,110 @@
       }
     ]
   },
+  "pricing": {
+    "packages": [
+      {
+        "key": "deep-cleaning-office",
+        "label": "Deep Cleaning Office",
+        "rows": [
+          {
+            "area": "ไม่เกิน 100",
+            "hours": 4,
+            "once": "1,950",
+            "twice": "3,900",
+            "fourTimes": "7,400",
+            "eightTimes": "14,000"
+          },
+          {
+            "area": "100 - 200",
+            "hours": 4,
+            "once": "3,900",
+            "twice": "7,800",
+            "fourTimes": "14,900",
+            "eightTimes": "28,000"
+          },
+          {
+            "area": "201 - 300",
+            "hours": 5,
+            "once": "4,900",
+            "twice": "9,800",
+            "fourTimes": "18,600",
+            "eightTimes": "35,000"
+          },
+          {
+            "area": "301 - 400",
+            "hours": 8,
+            "once": "5,900",
+            "twice": "11,800",
+            "fourTimes": "22,400",
+            "eightTimes": "42,500"
+          },
+          {
+            "area": "401 - 500",
+            "hours": 8,
+            "once": "6,900",
+            "twice": "13,800",
+            "fourTimes": "26,200",
+            "eightTimes": "49,600"
+          }
+        ]
+      },
+      {
+        "key": "deep-cleaning-condo",
+        "label": "Deep Cleaning Condo",
+        "rows": [
+          {
+            "area": "ไม่เกิน 100",
+            "hours": 4,
+            "once": "1,950",
+            "twice": "3,900",
+            "fourTimes": "7,400",
+            "eightTimes": "14,000"
+          },
+          {
+            "area": "100 - 200",
+            "hours": 4,
+            "once": "3,900",
+            "twice": "7,800",
+            "fourTimes": "14,900",
+            "eightTimes": "28,000"
+          },
+          {
+            "area": "201 - 300",
+            "hours": 5,
+            "once": "4,900",
+            "twice": "9,800",
+            "fourTimes": "18,600",
+            "eightTimes": "35,000"
+          },
+          {
+            "area": "301 - 400",
+            "hours": 8,
+            "once": "5,900",
+            "twice": "11,800",
+            "fourTimes": "22,400",
+            "eightTimes": "42,500"
+          },
+          {
+            "area": "401 - 500",
+            "hours": 8,
+            "once": "6,900",
+            "twice": "13,800",
+            "fourTimes": "26,200",
+            "eightTimes": "49,600"
+          }
+        ]
+      }
+    ],
+    "notes": [
+      {
+        "text": "*ราคารวมค่าเดินทางแล้ว"
+      },
+      {
+        "text": "**ขนาดพื้นที่มากกว่า 500 ตร.ม. กรุณาติดต่อผู้ดูแลเพื่อสอบถามรายละเอียด"
+      }
+    ]
+  },
   "categories": [
     {
       "name": "news",
