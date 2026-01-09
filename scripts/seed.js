@@ -13,6 +13,7 @@ const {
   pricing,
   faq,
   products,
+  homePage,
 } = require('../data/data.json');
 
 async function seedExampleApp() {
@@ -278,6 +279,55 @@ async function importFaq() {
   });
 }
 
+async function importHomePage() {
+  if (!homePage) {
+    return;
+  }
+
+  const hero = { ...homePage.hero };
+  if (hero?.heroImage) {
+    hero.heroImage = await checkFileExistsBeforeUpload([hero.heroImage]);
+  }
+
+  const services = await Promise.all(
+    homePage.services.map(async (service) => {
+      const image = await checkFileExistsBeforeUpload([service.image]);
+      return { ...service, image };
+    })
+  );
+
+  const leftCardImage = await checkFileExistsBeforeUpload([
+    homePage.tersano.leftCard.image,
+  ]);
+  const rightCardImage = await checkFileExistsBeforeUpload([
+    homePage.tersano.rightCard.image,
+  ]);
+
+  const tersano = {
+    ...homePage.tersano,
+    leftCard: {
+      ...homePage.tersano.leftCard,
+      image: leftCardImage,
+    },
+    rightCard: {
+      ...homePage.tersano.rightCard,
+      image: rightCardImage,
+    },
+  };
+
+  await createEntry({
+    model: 'home-page',
+    entry: {
+      ...homePage,
+      hero,
+      services,
+      tersano,
+      // Make sure it's not a draft
+      publishedAt: Date.now(),
+    },
+  });
+}
+
 async function importProducts() {
   for (const product of products) {
     const thumbnail = await checkFileExistsBeforeUpload([product.thumbnail]);
@@ -332,6 +382,7 @@ async function importSeedData() {
     contact: ['find', 'findOne'],
     pricing: ['find', 'findOne'],
     faq: ['find', 'findOne'],
+    'home-page': ['find', 'findOne'],
     product: ['find', 'findOne'],
   });
 
@@ -344,6 +395,7 @@ async function importSeedData() {
   await importContact();
   await importPricing();
   await importFaq();
+  await importHomePage();
   await importProducts();
 }
 

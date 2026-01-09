@@ -9,6 +9,66 @@
     "siteDescription": "A Blog made with Strapi",
     "favicon": null
   },
+  "homePage": {
+    "hero": {
+      "eyebrow": "Tinedy Solutions",
+      "headingLines": [
+        {
+          "leadingText": "We",
+          "highlightText": "Clean",
+          "trailingText": ".",
+          "accent": "navy"
+        },
+        {
+          "leadingText": "We",
+          "highlightText": "Train",
+          "trailingText": ".",
+          "accent": "gold"
+        },
+        {
+          "leadingText": "You",
+          "highlightText": "Relax",
+          "trailingText": ".",
+          "accent": "sage"
+        }
+      ],
+      "description": "เราไม่ใช่เพียงแค่บริการทำความสะอาด\nแต่คือผู้ช่วยที่คุณไว้วางใจได้\nให้พื้นที่ของคุณสะอาด ปลอดภัย\nและสะท้อนถึงมาตรฐานชีวิตที่คุณเลือก",
+      "primaryCtaLabel": "จองบริการ",
+      "primaryCtaUrl": "/contact",
+      "secondaryCtaLabel": "แชทเลย!",
+      "secondaryCtaUrl": "https://line.me/",
+      "heroImage": "interior-design-with-green-plant-shadow.png"
+    },
+    "services": [
+      {
+        "title": "Deep Cleaning",
+        "description": "ครอบคลุมทุกซอกทุกมุมที่มองไม่เห็นและเข้าถึงยาก ขจัดสิ่งสกปรกที่สะสมมานาน คืนความสะอาด สดชื่น และความน่าอยู่ ให้กับบ้านหรือพื้นที่ทำงาน",
+        "image": "Group-35.png",
+        "imageAlt": "การทำความสะอาดโซฟาด้วยเครื่องดูดฝุ่น"
+      },
+      {
+        "title": "Training",
+        "description": "บริการฝึกอบรมและพัฒนามาตรฐานการทำความสะอาด สำหรับองค์กร หรือทีมงานของคุณ เพื่อสร้างบุคลากรที่มีความรู้ ทักษะ และความเป็นมืออาชีพระดับสูงสุด",
+        "image": "mission.png",
+        "imageAlt": "ห้องอบรมทีมงานทำความสะอาด"
+      }
+    ],
+    "tersano": {
+      "title": "ทำไมต้องเลือก TINEDY Solutions",
+      "leftCard": {
+        "title": "ความน่าเชื่อถือ",
+        "description": "ด้วยประสบการณ์จากการบริหารอสังหาริมทรัพย์ เราจึงเข้าใจถึงความสำคัญของพื้นที่ที่คุณรัก และรู้ว่าการดูแลที่ถูกต้องคือการดูแลความสุข และความมั่นใจของคุณ",
+        "image": "Frame-798.png",
+        "imageAlt": "พื้นที่ครัวและพื้นที่ใช้สอยที่สะอาดเรียบร้อย"
+      },
+      "rightCard": {
+        "title": "เราคือมืออาชีพ",
+        "description": "ทุกทีมงานผ่านการคัดเลือกและการฝึกฝนอย่างเข้มงวด มาพร้อมมาตรฐานการทำงานที่เน้นความละเอียด ความแม่นยำ เพื่อให้คุณได้รับประสบการณ์ที่ดีที่สุดทุกครั้ง",
+        "image": "Frame-799.png",
+        "imageAlt": "การทำความสะอาดพื้นผิวอย่างพิถีพิถัน"
+      }
+    }
+  },
   "about": {
     "title": "เกี่ยวกับเรา",
     "blocks": [
