@@ -3,7 +3,17 @@
 const fs = require('fs-extra');
 const path = require('path');
 const mime = require('mime-types');
-const { categories, authors, articles, global, about, contact, pricing } = require('../data/data.json');
+const {
+  categories,
+  authors,
+  articles,
+  global,
+  about,
+  contact,
+  pricing,
+  faq,
+  products,
+} = require('../data/data.json');
 
 async function seedExampleApp() {
   const shouldImportSeedData = await isFirstRun();
@@ -257,6 +267,39 @@ async function importPricing() {
   });
 }
 
+async function importFaq() {
+  await createEntry({
+    model: 'faq',
+    entry: {
+      ...faq,
+      // Make sure it's not a draft
+      publishedAt: Date.now(),
+    },
+  });
+}
+
+async function importProducts() {
+  for (const product of products) {
+    const thumbnail = await checkFileExistsBeforeUpload([product.thumbnail]);
+    const images = product.images?.length
+      ? await checkFileExistsBeforeUpload(product.images)
+      : undefined;
+
+    const entry = {
+      ...product,
+      thumbnail,
+      // Make sure it's not a draft
+      publishedAt: Date.now(),
+    };
+
+    if (images) {
+      entry.images = images;
+    }
+
+    await createEntry({ model: 'product', entry });
+  }
+}
+
 async function importCategories() {
   for (const category of categories) {
     await createEntry({ model: 'category', entry: category });
@@ -288,6 +331,8 @@ async function importSeedData() {
     about: ['find', 'findOne'],
     contact: ['find', 'findOne'],
     pricing: ['find', 'findOne'],
+    faq: ['find', 'findOne'],
+    product: ['find', 'findOne'],
   });
 
   // Create all entries
@@ -298,6 +343,8 @@ async function importSeedData() {
   await importAbout();
   await importContact();
   await importPricing();
+  await importFaq();
+  await importProducts();
 }
 
 async function main() {
