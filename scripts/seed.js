@@ -7,13 +7,21 @@ const {
   categories,
   authors,
   articles,
+  blogs,
   global,
   about,
+  careerPage,
   contact,
+  contactForms,
   pricing,
   faq,
+  homeFeatures,
   products,
   homePage,
+  jobApplications,
+  jobOpenings,
+  policyPage,
+  testimonials,
 } = require('../data/data.json');
 
 async function seedExampleApp() {
@@ -187,6 +195,11 @@ async function updateBlocks(blocks) {
       blockCopy.files = existingAndUploadedFiles;
       // Push the updated block
       updatedBlocks.push(blockCopy);
+    } else if (block.__component === 'blog.image') {
+      const uploadedFiles = await checkFileExistsBeforeUpload([block.image]);
+      const blockCopy = { ...block };
+      blockCopy.image = uploadedFiles;
+      updatedBlocks.push(blockCopy);
     } else {
       // Just push the block as is
       updatedBlocks.push(block);
@@ -210,6 +223,38 @@ async function importArticles() {
         // Make sure it's not a draft
         publishedAt: Date.now(),
       },
+    });
+  }
+}
+
+async function importBlogs() {
+  if (!blogs?.length) {
+    return;
+  }
+
+  for (const blog of blogs) {
+    const updatedContent = blog.content ? await updateBlocks(blog.content) : undefined;
+    const coverImage = blog.coverImage
+      ? await checkFileExistsBeforeUpload([blog.coverImage])
+      : undefined;
+
+    const entry = {
+      ...blog,
+      // Make sure it's not a draft
+      publishedAt: Date.now(),
+    };
+
+    if (updatedContent) {
+      entry.content = updatedContent;
+    }
+
+    if (coverImage) {
+      entry.coverImage = coverImage;
+    }
+
+    await createEntry({
+      model: 'blog',
+      entry,
     });
   }
 }
@@ -257,6 +302,19 @@ async function importContact() {
   });
 }
 
+async function importContactForms() {
+  if (!contactForms?.length) {
+    return;
+  }
+
+  for (const form of contactForms) {
+    await createEntry({
+      model: 'contact-form',
+      entry: form,
+    });
+  }
+}
+
 async function importPricing() {
   await createEntry({
     model: 'pricing',
@@ -266,6 +324,104 @@ async function importPricing() {
       publishedAt: Date.now(),
     },
   });
+}
+
+async function importHomeFeatures() {
+  if (!homeFeatures?.length) {
+    return;
+  }
+
+  for (const feature of homeFeatures) {
+    const image = await checkFileExistsBeforeUpload([feature.image]);
+    await createEntry({
+      model: 'home-feature',
+      entry: {
+        ...feature,
+        image,
+      },
+    });
+  }
+}
+
+async function importTestimonials() {
+  if (!testimonials?.length) {
+    return;
+  }
+
+  for (const testimonial of testimonials) {
+    const image = await checkFileExistsBeforeUpload([testimonial.image]);
+    await createEntry({
+      model: 'testimonial',
+      entry: {
+        ...testimonial,
+        image,
+      },
+    });
+  }
+}
+
+async function importPolicyPage() {
+  if (!policyPage) {
+    return;
+  }
+
+  await createEntry({
+    model: 'policy-page',
+    entry: policyPage,
+  });
+}
+
+async function importCareerPage() {
+  if (!careerPage) {
+    return;
+  }
+
+  const heroImage = await checkFileExistsBeforeUpload([careerPage.heroImage]);
+  const cultureCards = await Promise.all(
+    careerPage.cultureCards.map(async (card) => {
+      const image = await checkFileExistsBeforeUpload([card.image]);
+      return { ...card, image };
+    })
+  );
+
+  await createEntry({
+    model: 'career-page',
+    entry: {
+      ...careerPage,
+      heroImage,
+      cultureCards,
+    },
+  });
+}
+
+async function importJobOpenings() {
+  if (!jobOpenings?.length) {
+    return;
+  }
+
+  for (const opening of jobOpenings) {
+    await createEntry({
+      model: 'job-opening',
+      entry: opening,
+    });
+  }
+}
+
+async function importJobApplications() {
+  if (!jobApplications?.length) {
+    return;
+  }
+
+  for (const application of jobApplications) {
+    const resume = await checkFileExistsBeforeUpload([application.resume]);
+    await createEntry({
+      model: 'job-application',
+      entry: {
+        ...application,
+        resume,
+      },
+    });
+  }
 }
 
 async function importFaq() {
@@ -380,22 +536,35 @@ async function importSeedData() {
     global: ['find', 'findOne'],
     about: ['find', 'findOne'],
     contact: ['find', 'findOne'],
+    'career-page': ['find', 'findOne'],
     pricing: ['find', 'findOne'],
     faq: ['find', 'findOne'],
     'home-page': ['find', 'findOne'],
+    'home-feature': ['find', 'findOne'],
+    'job-opening': ['find', 'findOne'],
+    'policy-page': ['find', 'findOne'],
     product: ['find', 'findOne'],
+    testimonial: ['find', 'findOne'],
   });
 
   // Create all entries
   await importCategories();
   await importAuthors();
+  await importBlogs();
   await importArticles();
   await importGlobal();
   await importAbout();
+  await importCareerPage();
   await importContact();
+  await importContactForms();
   await importPricing();
   await importFaq();
   await importHomePage();
+  await importHomeFeatures();
+  await importTestimonials();
+  await importPolicyPage();
+  await importJobOpenings();
+  await importJobApplications();
   await importProducts();
 }
 

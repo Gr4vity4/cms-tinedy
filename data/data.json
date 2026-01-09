@@ -921,5 +921,368 @@
         }
       ]
     }
+  ],
+  "blogs": [
+    {
+      "title": "A calm start to every clean",
+      "slug": "a-calm-start-to-every-clean",
+      "excerpt": "Simple routines and a clear plan keep every visit consistent and stress free.",
+      "coverImage": "coffee-shadow.jpg",
+      "coverImageAlt": "Steam rising over a cup on a clean table",
+      "publishedOn": "2024-07-10",
+      "readTimeMinutes": 4,
+      "content": [
+        {
+          "__component": "blog.heading",
+          "text": "Plan the flow"
+        },
+        {
+          "__component": "blog.paragraph",
+          "text": "Begin with a short walkthrough and set a room by room sequence. A consistent order reduces missed areas and saves time."
+        },
+        {
+          "__component": "blog.image",
+          "image": "coffee-beans.jpg",
+          "alt": "Organized tools on a wooden table",
+          "variant": "wide"
+        },
+        {
+          "__component": "blog.paragraph",
+          "text": "Small resets like refilling supplies and labeling tools help the next visit start smoothly."
+        }
+      ],
+      "category": {
+        "id": 1
+      },
+      "author": {
+        "id": 1
+      }
+    },
+    {
+      "title": "Training that lasts beyond day one",
+      "slug": "training-that-lasts-beyond-day-one",
+      "excerpt": "Short refreshers and clear checklists turn good cleaning into a reliable standard.",
+      "coverImage": "we-love-pizza.jpg",
+      "coverImageAlt": "A tidy dining table ready for service",
+      "publishedOn": "2024-07-22",
+      "readTimeMinutes": 5,
+      "content": [
+        {
+          "__component": "blog.heading",
+          "text": "Teach the why"
+        },
+        {
+          "__component": "blog.paragraph",
+          "text": "Explain how each step protects surfaces and improves comfort. When people know the reason, quality stays steady."
+        },
+        {
+          "__component": "blog.image",
+          "image": "beautiful-picture.jpg",
+          "alt": "Bright room after cleaning",
+          "variant": "narrow"
+        },
+        {
+          "__component": "blog.paragraph",
+          "text": "Weekly micro sessions keep the process sharp and make onboarding faster."
+        }
+      ],
+      "category": {
+        "id": 5
+      },
+      "author": {
+        "id": 2
+      }
+    }
+  ],
+  "homeFeatures": [
+    {
+      "title": "Certified teams",
+      "description": "Every cleaner follows a documented checklist and signs off on each room.",
+      "image": "mission.png",
+      "imageAlt": "Training room with desks",
+      "order": 1
+    },
+    {
+      "title": "Non-chemical options",
+      "description": "We use stabilized aqueous ozone where it fits, reducing residue and odor.",
+      "image": "interior-design-with-green-plant-shadow.png",
+      "imageAlt": "Sunlit interior with plants",
+      "order": 2
+    },
+    {
+      "title": "Transparent pricing",
+      "description": "Clear packages with defined scope so there are no surprises.",
+      "image": "Group-35.png",
+      "imageAlt": "Vacuum cleaning a sofa",
+      "order": 3
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Our office feels reset after every visit. The team is punctual and focused.",
+      "author": "Nina K.",
+      "image": "sarahbaker@strapi.io.jpg",
+      "imageAlt": "Portrait of Nina"
+    },
+    {
+      "quote": "The checklist approach keeps quality consistent across all rooms.",
+      "author": "Mark D.",
+      "image": "daviddoe@strapi.io.jpg",
+      "imageAlt": "Portrait of Mark"
+    },
+    {
+      "quote": "Non-chemical cleaning works well and the space smells fresh, not harsh.",
+      "author": "Krit S.",
+      "image": "coffee-shadow.jpg",
+      "imageAlt": "Clean workspace"
+    }
+  ],
+  "policyPage": {
+    "title": "Service Policy",
+    "sections": [
+      {
+        "number": 1,
+        "title": "Scheduling",
+        "body": "We confirm dates within 24 hours. Time windows are shared the day before service.",
+        "bullets": [
+          {
+            "text": "Please ensure access to the property at the scheduled time."
+          },
+          {
+            "text": "Notify us 48 hours in advance for changes."
+          }
+        ],
+        "note": "Same day requests are subject to availability."
+      },
+      {
+        "number": 2,
+        "title": "Access and safety",
+        "body": "We follow room by room checklists and use labeled tools for each surface.",
+        "bullets": [
+          {
+            "text": "Secure valuables and sensitive documents."
+          },
+          {
+            "text": "Let us know about fragile items or restricted areas."
+          }
+        ],
+        "note": "We do not move heavy furniture without approval."
+      },
+      {
+        "number": 3,
+        "title": "Rescheduling and cancellations",
+        "body": "Cancellations within 24 hours may incur a partial fee.",
+        "bullets": [
+          {
+            "text": "One free reschedule is included per month."
+          },
+          {
+            "text": "Severe weather or safety issues allow fee free changes."
+          }
+        ],
+        "note": "Contact support for urgent changes."
+      }
+    ]
+  },
+  "careerPage": {
+    "heroTitle": "Build a cleaner future with us",
+    "heroImage": "interior-design-with-green-plant-shadow.png",
+    "introEyebrow": "Careers at Tinedy",
+    "introHeading": "We hire people who care about details, teamwork, and reliable service.",
+    "cultureCards": [
+      {
+        "title": "Growth mindset",
+        "description": "We train every team member and reward steady improvement.",
+        "image": "mission.png",
+        "imageAlt": "Training session"
+      },
+      {
+        "title": "Team first",
+        "description": "We support each other on site and share clear feedback.",
+        "image": "Frame-798.png",
+        "imageAlt": "Clean kitchen interior"
+      },
+      {
+        "title": "Respect for spaces",
+        "description": "We treat every home and office as if it were our own.",
+        "image": "Frame-799.png",
+        "imageAlt": "Hands cleaning a surface"
+      }
+    ],
+    "jobSectionTitle": "Open roles",
+    "jobGroups": [
+      {
+        "title": "Operations",
+        "jobs": [
+          {
+            "title": "Cleaning Specialist",
+            "tags": [
+              {
+                "label": "Full-time"
+              },
+              {
+                "label": "On-site"
+              }
+            ]
+          },
+          {
+            "title": "Team Lead",
+            "tags": [
+              {
+                "label": "Full-time"
+              },
+              {
+                "label": "Leadership"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Training",
+        "jobs": [
+          {
+            "title": "Cleaning Trainer",
+            "tags": [
+              {
+                "label": "Full-time"
+              },
+              {
+                "label": "Training"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "jobOpenings": [
+    {
+      "title": "Cleaning Specialist",
+      "slug": "cleaning-specialist",
+      "tags": [
+        {
+          "label": "Full-time"
+        },
+        {
+          "label": "On-site"
+        }
+      ],
+      "requirements": [
+        {
+          "text": "1+ year experience in cleaning, hospitality, or facilities."
+        },
+        {
+          "text": "Able to follow a checklist with attention to detail."
+        },
+        {
+          "text": "Comfortable standing and lifting light equipment."
+        }
+      ],
+      "location": "Bangkok, Thailand",
+      "contactLineId": "@tinedycareers",
+      "contactPhone": "083-010-9346",
+      "contactNote": "Send a short resume and your preferred start date."
+    },
+    {
+      "title": "Team Lead",
+      "slug": "team-lead",
+      "tags": [
+        {
+          "label": "Full-time"
+        },
+        {
+          "label": "Leadership"
+        },
+        {
+          "label": "On-site"
+        }
+      ],
+      "requirements": [
+        {
+          "text": "2+ years leading a small cleaning team."
+        },
+        {
+          "text": "Can train new staff and review quality."
+        },
+        {
+          "text": "Basic reporting with mobile apps."
+        }
+      ],
+      "location": "Bangkok, Thailand",
+      "contactLineId": "@tinedycareers",
+      "contactPhone": "083-010-9346",
+      "contactNote": "Include two references."
+    },
+    {
+      "title": "Cleaning Trainer",
+      "slug": "cleaning-trainer",
+      "tags": [
+        {
+          "label": "Full-time"
+        },
+        {
+          "label": "Training"
+        },
+        {
+          "label": "On-site"
+        }
+      ],
+      "requirements": [
+        {
+          "text": "Experience in training or coaching."
+        },
+        {
+          "text": "Strong communication and patience."
+        },
+        {
+          "text": "Knowledge of safe cleaning practices."
+        }
+      ],
+      "location": "Bangkok, Thailand",
+      "contactLineId": "@tinedycareers",
+      "contactPhone": "083-010-9346",
+      "contactNote": "Portfolio of training materials is a plus."
+    }
+  ],
+  "jobApplications": [
+    {
+      "job": {
+        "id": 1
+      },
+      "fullName": "Alex Parker",
+      "phone": "089-555-0101",
+      "email": "alex.parker@example.com",
+      "workHistory": "Two years in commercial cleaning and one year as shift lead.",
+      "resume": "resume-sample.txt"
+    },
+    {
+      "job": {
+        "id": 2
+      },
+      "fullName": "Jamie Lin",
+      "phone": "082-555-0122",
+      "email": "jamie.lin@example.com",
+      "workHistory": "Managed a three person team and handled quality checks for offices.",
+      "resume": "resume-sample.txt"
+    }
+  ],
+  "contactForms": [
+    {
+      "fullName": "Aria Chen",
+      "phone": "081-555-0142",
+      "email": "aria.chen@example.com",
+      "cleanDate": "2024-09-15",
+      "areaSize": 220,
+      "message": "Looking for deep cleaning for a 180 sqm office. Weekend preferred."
+    },
+    {
+      "fullName": "Somchai K.",
+      "phone": "080-555-0133",
+      "email": "somchai.k@example.com",
+      "cleanDate": "2024-10-02",
+      "areaSize": 95,
+      "message": "Condo deep clean and balcony. No pets."
+    }
   ]
 }
