@@ -444,6 +444,14 @@ async function importHomePage() {
   if (hero?.heroImage) {
     hero.heroImage = await checkFileExistsBeforeUpload([hero.heroImage]);
   }
+  if (hero?.heroImageMobile) {
+    hero.heroImageMobile = await checkFileExistsBeforeUpload([hero.heroImageMobile]);
+  }
+
+  const bookingBanner = homePage.bookingBanner ? { ...homePage.bookingBanner } : undefined;
+  if (bookingBanner?.image) {
+    bookingBanner.image = await checkFileExistsBeforeUpload([bookingBanner.image]);
+  }
 
   const services = await Promise.all(
     homePage.services.map(async (service) => {
@@ -478,6 +486,7 @@ async function importHomePage() {
       hero,
       services,
       tersano,
+      bookingBanner,
       // Make sure it's not a draft
       publishedAt: Date.now(),
     },

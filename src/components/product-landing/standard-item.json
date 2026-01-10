@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_product_landing_standard_items",
+  "info": {
+    "displayName": "Standard Item",
+    "icon": "certificate",
+    "description": "Certification standard item"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

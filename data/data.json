@@ -67,6 +67,19 @@
         "image": "Frame-799.png",
         "imageAlt": "การทำความสะอาดพื้นผิวอย่างพิถีพิถัน"
       }
+    },
+    "featuredProductsHeading": "เทคโนโลยีทำความสะอาดคุณภาพสูง",
+    "featuredProductsLinkLabel": "ดูทั้งหมด",
+    "featuredProductsLinkUrl": "#products",
+    "recommendedProductsHeading": "ผลิตภัณฑ์ทำความสะอาดแนะนำ",
+    "recommendedProductsLinkLabel": "ดูทั้งหมด",
+    "recommendedProductsLinkUrl": "#products",
+    "bookingBanner": {
+      "title": "จองตอนนี้ และสัมผัสมาตรฐานการบริการที่แตกต่างจาก Tinedy Solutions",
+      "ctaLabel": "จองบริการ",
+      "ctaUrl": "/#booking",
+      "image": "booking-banner.png",
+      "imageAlt": "Cleaning tools on a countertop"
     }
   },
   "about": {

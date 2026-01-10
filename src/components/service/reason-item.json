@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_service_reason_items",
+  "info": {
+    "displayName": "Reason Item",
+    "icon": "check",
+    "description": "Icon + text item for service reasons"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "enumeration",
+      "enum": ["room-cleaning", "people", "floor", "ecology-1"],
+      "required": true
+    },
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

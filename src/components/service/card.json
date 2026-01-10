@@ -1,18 +1,15 @@
 {
-  "collectionName": "components_home_service_cards",
+  "collectionName": "components_service_cards",
   "info": {
     "displayName": "Service Card",
-    "icon": "grid",
-    "description": "Image card for homepage services section"
+    "icon": "image",
+    "description": "Image card with title and description"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
       "required": true
-    },
-    "anchorId": {
-      "type": "string"
     },
     "description": {
       "type": "text",
@@ -25,8 +22,7 @@
       "allowedTypes": ["images"]
     },
     "imageAlt": {
-      "type": "string",
-      "required": true
+      "type": "string"
     }
   }
 }

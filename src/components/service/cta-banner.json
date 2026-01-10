@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_service_cta_banners",
+  "info": {
+    "displayName": "CTA Banner",
+    "icon": "announcement",
+    "description": "Image banner with CTA button"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "ctaLabel": {
+      "type": "string",
+      "required": true
+    },
+    "ctaUrl": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "imageAlt": {
+      "type": "string"
+    }
+  }
+}

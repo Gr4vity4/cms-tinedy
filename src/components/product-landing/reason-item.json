@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_product_landing_reason_items",
+  "info": {
+    "displayName": "Reason Item",
+    "icon": "thumbs-up",
+    "description": "Reason item with icon, title, and description"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "safer",
+        "save-time-cost",
+        "proven-performance",
+        "sustainability"
+      ],
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_service_client_cards",
+  "info": {
+    "displayName": "Client Card",
+    "icon": "user",
+    "description": "Client testimonial card"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "company": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "imageAlt": {
+      "type": "string"
+    }
+  }
+}

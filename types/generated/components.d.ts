@@ -241,6 +241,22 @@ export interface FaqItem extends Struct.ComponentSchema {
   };
 }
 
+export interface HomeBookingBanner extends Struct.ComponentSchema {
+  collectionName: 'components_home_booking_banners';
+  info: {
+    description: 'CTA banner for booking services on the home page';
+    displayName: 'Booking Banner';
+    icon: 'announcement';
+  };
+  attributes: {
+    ctaLabel: Schema.Attribute.String & Schema.Attribute.Required;
+    ctaUrl: Schema.Attribute.String & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageAlt: Schema.Attribute.String;
+    title: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
 export interface HomeHero extends Struct.ComponentSchema {
   collectionName: 'components_home_heroes';
   info: {
@@ -254,6 +270,7 @@ export interface HomeHero extends Struct.ComponentSchema {
     headingLines: Schema.Attribute.Component<'home.hero-line', true> &
       Schema.Attribute.Required;
     heroImage: Schema.Attribute.Media<'images'>;
+    heroImageMobile: Schema.Attribute.Media<'images'>;
     primaryCtaLabel: Schema.Attribute.String & Schema.Attribute.Required;
     primaryCtaUrl: Schema.Attribute.String & Schema.Attribute.Required;
     secondaryCtaLabel: Schema.Attribute.String & Schema.Attribute.Required;
@@ -300,6 +317,7 @@ export interface HomeServiceCard extends Struct.ComponentSchema {
     icon: 'grid';
   };
   attributes: {
+    anchorId: Schema.Attribute.String;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     imageAlt: Schema.Attribute.String & Schema.Attribute.Required;
@@ -397,6 +415,83 @@ export interface PricingRow extends Struct.ComponentSchema {
   };
 }
 
+export interface ProductLandingFeatureCard extends Struct.ComponentSchema {
+  collectionName: 'components_product_landing_feature_cards';
+  info: {
+    description: 'Feature card with image, title, and description';
+    displayName: 'Feature Card';
+    icon: 'image';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageAlt: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ProductLandingReasonItem extends Struct.ComponentSchema {
+  collectionName: 'components_product_landing_reason_items';
+  info: {
+    description: 'Reason item with icon, title, and description';
+    displayName: 'Reason Item';
+    icon: 'thumbs-up';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    icon: Schema.Attribute.Enumeration<
+      ['safer', 'save-time-cost', 'proven-performance', 'sustainability']
+    > &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ProductLandingSpecItem extends Struct.ComponentSchema {
+  collectionName: 'components_product_landing_spec_items';
+  info: {
+    description: 'Technical spec item with icon';
+    displayName: 'Spec Item';
+    icon: 'list';
+  };
+  attributes: {
+    icon: Schema.Attribute.Enumeration<
+      ['battery', 'spray', 'filter', 'faucet', 'badge', 'safety']
+    > &
+      Schema.Attribute.Required;
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    underlineValue: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    value: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ProductLandingStandardItem extends Struct.ComponentSchema {
+  collectionName: 'components_product_landing_standard_items';
+  info: {
+    description: 'Certification standard item';
+    displayName: 'Standard Item';
+    icon: 'certificate';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    value: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface ProductLandingTableRow extends Struct.ComponentSchema {
+  collectionName: 'components_product_landing_table_rows';
+  info: {
+    description: 'Simple label/value row';
+    displayName: 'Table Row';
+    icon: 'table';
+  };
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required;
+    value: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ProductTechnicalSpecRow extends Struct.ComponentSchema {
   collectionName: 'components_product_technical_spec_rows';
   info: {
@@ -424,6 +519,114 @@ export interface ProductTechnicalSpecTable extends Struct.ComponentSchema {
     detailHeader: Schema.Attribute.String & Schema.Attribute.Required;
     rows: Schema.Attribute.Component<'product.technical-spec-row', true> &
       Schema.Attribute.Required;
+  };
+}
+
+export interface ServiceCard extends Struct.ComponentSchema {
+  collectionName: 'components_service_cards';
+  info: {
+    description: 'Image card with title and description';
+    displayName: 'Service Card';
+    icon: 'image';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageAlt: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ServiceClientCard extends Struct.ComponentSchema {
+  collectionName: 'components_service_client_cards';
+  info: {
+    description: 'Client testimonial card';
+    displayName: 'Client Card';
+    icon: 'user';
+  };
+  attributes: {
+    company: Schema.Attribute.String & Schema.Attribute.Required;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageAlt: Schema.Attribute.String;
+    location: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ServiceCtaBanner extends Struct.ComponentSchema {
+  collectionName: 'components_service_cta_banners';
+  info: {
+    description: 'Image banner with CTA button';
+    displayName: 'CTA Banner';
+    icon: 'announcement';
+  };
+  attributes: {
+    ctaLabel: Schema.Attribute.String & Schema.Attribute.Required;
+    ctaUrl: Schema.Attribute.String & Schema.Attribute.Required;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageAlt: Schema.Attribute.String;
+    title: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface ServiceImageItem extends Struct.ComponentSchema {
+  collectionName: 'components_service_image_items';
+  info: {
+    description: 'Standalone image item';
+    displayName: 'Image Item';
+    icon: 'image';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageAlt: Schema.Attribute.String;
+  };
+}
+
+export interface ServiceOutcomeItem extends Struct.ComponentSchema {
+  collectionName: 'components_service_outcome_items';
+  info: {
+    description: 'Outcome item with icon, title, and description';
+    displayName: 'Outcome Item';
+    icon: 'chart-line';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    icon: Schema.Attribute.Enumeration<
+      ['team', 'shield-check', 'uptrend', 'consistency', 'sustainability']
+    > &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ServiceQuoteBanner extends Struct.ComponentSchema {
+  collectionName: 'components_service_quote_banners';
+  info: {
+    description: 'Full-width banner with background image and overlay text';
+    displayName: 'Quote Banner';
+    icon: 'quote-left';
+  };
+  attributes: {
+    backgroundImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required;
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
+  };
+}
+
+export interface ServiceReasonItem extends Struct.ComponentSchema {
+  collectionName: 'components_service_reason_items';
+  info: {
+    description: 'Icon + text item for service reasons';
+    displayName: 'Reason Item';
+    icon: 'check';
+  };
+  attributes: {
+    icon: Schema.Attribute.Enumeration<
+      ['room-cleaning', 'people', 'floor', 'ecology-1']
+    > &
+      Schema.Attribute.Required;
+    text: Schema.Attribute.Text & Schema.Attribute.Required;
   };
 }
 
@@ -509,6 +712,7 @@ declare module '@strapi/strapi' {
       'contact.social-link': ContactSocialLink;
       'faq.answer-row': FaqAnswerRow;
       'faq.item': FaqItem;
+      'home.booking-banner': HomeBookingBanner;
       'home.hero': HomeHero;
       'home.hero-line': HomeHeroLine;
       'home.product-card': HomeProductCard;
@@ -519,8 +723,20 @@ declare module '@strapi/strapi' {
       'pricing.note': PricingNote;
       'pricing.package': PricingPackage;
       'pricing.row': PricingRow;
+      'product-landing.feature-card': ProductLandingFeatureCard;
+      'product-landing.reason-item': ProductLandingReasonItem;
+      'product-landing.spec-item': ProductLandingSpecItem;
+      'product-landing.standard-item': ProductLandingStandardItem;
+      'product-landing.table-row': ProductLandingTableRow;
       'product.technical-spec-row': ProductTechnicalSpecRow;
       'product.technical-spec-table': ProductTechnicalSpecTable;
+      'service.card': ServiceCard;
+      'service.client-card': ServiceClientCard;
+      'service.cta-banner': ServiceCtaBanner;
+      'service.image-item': ServiceImageItem;
+      'service.outcome-item': ServiceOutcomeItem;
+      'service.quote-banner': ServiceQuoteBanner;
+      'service.reason-item': ServiceReasonItem;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

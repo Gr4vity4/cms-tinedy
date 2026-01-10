@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_service_image_items",
+  "info": {
+    "displayName": "Image Item",
+    "icon": "image",
+    "description": "Standalone image item"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "imageAlt": {
+      "type": "string"
+    }
+  }
+}

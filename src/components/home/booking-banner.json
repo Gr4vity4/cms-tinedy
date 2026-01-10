@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_home_booking_banners",
+  "info": {
+    "displayName": "Booking Banner",
+    "icon": "announcement",
+    "description": "CTA banner for booking services on the home page"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "ctaLabel": {
+      "type": "string",
+      "required": true
+    },
+    "ctaUrl": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "imageAlt": {
+      "type": "string"
+    }
+  }
+}

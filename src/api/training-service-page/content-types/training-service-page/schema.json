@@ -1,0 +1,86 @@
+{
+  "kind": "singleType",
+  "collectionName": "training_service_pages",
+  "info": {
+    "singularName": "training-service-page",
+    "pluralName": "training-service-pages",
+    "displayName": "Training Service Page",
+    "description": "Training service page content"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroTitle": {
+      "type": "string",
+      "required": true
+    },
+    "heroSubtitle": {
+      "type": "text",
+      "required": true
+    },
+    "heroDescription": {
+      "type": "richtext",
+      "required": true
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "introText": {
+      "type": "text",
+      "required": true
+    },
+    "introBackgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "introImages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service.image-item",
+      "required": true
+    },
+    "outcomesHeading": {
+      "type": "string",
+      "required": true
+    },
+    "outcomes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service.outcome-item",
+      "required": true
+    },
+    "topicsHeading": {
+      "type": "string",
+      "required": true
+    },
+    "topics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service.card",
+      "required": true
+    },
+    "clientsHeading": {
+      "type": "string",
+      "required": true
+    },
+    "clients": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service.client-card",
+      "required": true
+    },
+    "ctaBanner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "service.cta-banner",
+      "required": true
+    }
+  }
+}

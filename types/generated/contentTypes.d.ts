@@ -660,6 +660,60 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCleaningServicePageCleaningServicePage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'cleaning_service_pages';
+  info: {
+    description: 'Cleaning service page content';
+    displayName: 'Cleaning Service Page';
+    pluralName: 'cleaning-service-pages';
+    singularName: 'cleaning-service-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    bookingBanner: Schema.Attribute.Component<'service.cta-banner', false> &
+      Schema.Attribute.Required;
+    bookingHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    bookingReasons: Schema.Attribute.Component<'service.reason-item', true> &
+      Schema.Attribute.Required;
+    bookingSubheading: Schema.Attribute.Text & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heroDescription: Schema.Attribute.RichText & Schema.Attribute.Required;
+    heroImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    heroSubtitle: Schema.Attribute.Text & Schema.Attribute.Required;
+    heroTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cleaning-service-page.cleaning-service-page'
+    > &
+      Schema.Attribute.Private;
+    productQualityCards: Schema.Attribute.Component<'service.card', true> &
+      Schema.Attribute.Required;
+    productQualityHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    productQualityIntro: Schema.Attribute.Text & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    quoteBannerOne: Schema.Attribute.Component<'service.quote-banner', false> &
+      Schema.Attribute.Required;
+    quoteBannerTwo: Schema.Attribute.Component<'service.quote-banner', false> &
+      Schema.Attribute.Required;
+    teamCards: Schema.Attribute.Component<'service.card', true> &
+      Schema.Attribute.Required;
+    teamHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    teamIntro: Schema.Attribute.Text & Schema.Attribute.Required;
+    tersanoCards: Schema.Attribute.Component<'service.card', true> &
+      Schema.Attribute.Required;
+    tersanoHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiContactFormContactForm extends Struct.CollectionTypeSchema {
   collectionName: 'contact_forms';
   info: {
@@ -688,6 +742,43 @@ export interface ApiContactFormContactForm extends Struct.CollectionTypeSchema {
     message: Schema.Attribute.Text & Schema.Attribute.Required;
     phone: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
+  collectionName: 'contact_pages';
+  info: {
+    description: 'Contact page content';
+    displayName: 'Contact Page';
+    pluralName: 'contact-pages';
+    singularName: 'contact-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    contactHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    formDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    formImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    formImageAlt: Schema.Attribute.String;
+    formTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    heroImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    heroTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact-page.contact-page'
+    > &
+      Schema.Attribute.Private;
+    mapEmbedUrl: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    socialHeading: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -830,9 +921,15 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
+    bookingBanner: Schema.Attribute.Component<'home.booking-banner', false> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    featuredProductsHeading: Schema.Attribute.String &
+      Schema.Attribute.Required;
+    featuredProductsLinkLabel: Schema.Attribute.String;
+    featuredProductsLinkUrl: Schema.Attribute.String;
     hero: Schema.Attribute.Component<'home.hero', false> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -842,6 +939,10 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    recommendedProductsHeading: Schema.Attribute.String &
+      Schema.Attribute.Required;
+    recommendedProductsLinkLabel: Schema.Attribute.String;
+    recommendedProductsLinkUrl: Schema.Attribute.String;
     services: Schema.Attribute.Component<'home.service-card', true> &
       Schema.Attribute.Required;
     tersano: Schema.Attribute.Component<'home.tersano', false> &
@@ -933,6 +1034,42 @@ export interface ApiJobOpeningJobOpening extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiOtherServicesPageOtherServicesPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'other_services_pages';
+  info: {
+    description: 'Other services page content';
+    displayName: 'Other Services Page';
+    pluralName: 'other-services-pages';
+    singularName: 'other-services-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    banner: Schema.Attribute.Component<'service.cta-banner', false> &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heroBrand: Schema.Attribute.String & Schema.Attribute.Required;
+    heroDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    heroImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    heroTagline: Schema.Attribute.Text & Schema.Attribute.Required;
+    heroTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::other-services-page.other-services-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPolicyPagePolicyPage extends Struct.SingleTypeSchema {
   collectionName: 'policy_pages';
   info: {
@@ -995,6 +1132,139 @@ export interface ApiPricingPricing extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiProductIcleanMiniPageProductIcleanMiniPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'product_iclean_mini_pages';
+  info: {
+    description: 'Landing page content for Tersano iClean mini';
+    displayName: 'Product iClean Mini Page';
+    pluralName: 'product-iclean-mini-pages';
+    singularName: 'product-iclean-mini-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    certificationBackgroundImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required;
+    certificationHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    certificationIntro: Schema.Attribute.Text & Schema.Attribute.Required;
+    certificationStandards: Schema.Attribute.Component<
+      'product-landing.standard-item',
+      true
+    > &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    featureCards: Schema.Attribute.Component<
+      'product-landing.feature-card',
+      true
+    > &
+      Schema.Attribute.Required;
+    featureDescription: Schema.Attribute.RichText & Schema.Attribute.Required;
+    featureEyebrow: Schema.Attribute.String & Schema.Attribute.Required;
+    featureHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    heroImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    heroSubtitle: Schema.Attribute.Text & Schema.Attribute.Required;
+    heroTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product-iclean-mini-page.product-iclean-mini-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    technicalSpecs: Schema.Attribute.Component<
+      'product-landing.spec-item',
+      true
+    > &
+      Schema.Attribute.Required;
+    technicalSpecsHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProductProV9PageProductProV9Page
+  extends Struct.SingleTypeSchema {
+  collectionName: 'product_pro_v9_pages';
+  info: {
+    description: 'Landing page content for Tersano lotus PRO V9';
+    displayName: 'Product PRO V9 Page';
+    pluralName: 'product-pro-v9-pages';
+    singularName: 'product-pro-v9-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    cartridgeProducts: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::product.product'
+    >;
+    cartridgesDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    cartridgesHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    cartridgesLinkLabel: Schema.Attribute.String;
+    cartridgesLinkUrl: Schema.Attribute.String;
+    certificationBackgroundImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required;
+    certificationHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    certificationIntro: Schema.Attribute.Text & Schema.Attribute.Required;
+    certificationSealImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required;
+    certificationStandards: Schema.Attribute.Component<
+      'product-landing.standard-item',
+      true
+    > &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dashboardDescription: Schema.Attribute.RichText & Schema.Attribute.Required;
+    dashboardHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    dashboardImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required;
+    featureCards: Schema.Attribute.Component<
+      'product-landing.feature-card',
+      true
+    > &
+      Schema.Attribute.Required;
+    featureDescription: Schema.Attribute.RichText & Schema.Attribute.Required;
+    featureEyebrow: Schema.Attribute.String & Schema.Attribute.Required;
+    featureHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    heroHighlight: Schema.Attribute.String & Schema.Attribute.Required;
+    heroImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    heroOverlay: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    heroSubtitle: Schema.Attribute.Text & Schema.Attribute.Required;
+    heroTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product-pro-v9-page.product-pro-v9-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    reasons: Schema.Attribute.Component<'product-landing.reason-item', true> &
+      Schema.Attribute.Required;
+    reasonsHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    technicalSpecsHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    technicalSpecsImage: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required;
+    technicalSpecsRows: Schema.Attribute.Component<
+      'product-landing.table-row',
+      true
+    > &
+      Schema.Attribute.Required;
+    technicalSpecsTableTitle: Schema.Attribute.String &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
@@ -1019,6 +1289,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     detail: Schema.Attribute.Text & Schema.Attribute.Required;
     discountPrice: Schema.Attribute.Decimal;
+    featuredOrder: Schema.Attribute.Integer;
+    featuredSection: Schema.Attribute.Enumeration<
+      ['home-tech', 'home-recommended']
+    >;
     howToUse: Schema.Attribute.Text;
     images: Schema.Attribute.Media<'images', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1034,6 +1308,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     sku: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     stock: Schema.Attribute.Integer & Schema.Attribute.Required;
     technicalInformation: Schema.Attribute.Component<
       'product.technical-spec-table',
@@ -1074,6 +1349,54 @@ export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     quote: Schema.Attribute.Text & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTrainingServicePageTrainingServicePage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'training_service_pages';
+  info: {
+    description: 'Training service page content';
+    displayName: 'Training Service Page';
+    pluralName: 'training-service-pages';
+    singularName: 'training-service-page';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    clients: Schema.Attribute.Component<'service.client-card', true> &
+      Schema.Attribute.Required;
+    clientsHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ctaBanner: Schema.Attribute.Component<'service.cta-banner', false> &
+      Schema.Attribute.Required;
+    heroDescription: Schema.Attribute.RichText & Schema.Attribute.Required;
+    heroImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    heroSubtitle: Schema.Attribute.Text & Schema.Attribute.Required;
+    heroTitle: Schema.Attribute.String & Schema.Attribute.Required;
+    introBackgroundImage: Schema.Attribute.Media<'images'>;
+    introImages: Schema.Attribute.Component<'service.image-item', true> &
+      Schema.Attribute.Required;
+    introText: Schema.Attribute.Text & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::training-service-page.training-service-page'
+    > &
+      Schema.Attribute.Private;
+    outcomes: Schema.Attribute.Component<'service.outcome-item', true> &
+      Schema.Attribute.Required;
+    outcomesHeading: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    topics: Schema.Attribute.Component<'service.card', true> &
+      Schema.Attribute.Required;
+    topicsHeading: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1596,7 +1919,9 @@ declare module '@strapi/strapi' {
       'api::blog.blog': ApiBlogBlog;
       'api::career-page.career-page': ApiCareerPageCareerPage;
       'api::category.category': ApiCategoryCategory;
+      'api::cleaning-service-page.cleaning-service-page': ApiCleaningServicePageCleaningServicePage;
       'api::contact-form.contact-form': ApiContactFormContactForm;
+      'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::contact.contact': ApiContactContact;
       'api::faq.faq': ApiFaqFaq;
       'api::global.global': ApiGlobalGlobal;
@@ -1604,10 +1929,14 @@ declare module '@strapi/strapi' {
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::job-application.job-application': ApiJobApplicationJobApplication;
       'api::job-opening.job-opening': ApiJobOpeningJobOpening;
+      'api::other-services-page.other-services-page': ApiOtherServicesPageOtherServicesPage;
       'api::policy-page.policy-page': ApiPolicyPagePolicyPage;
       'api::pricing.pricing': ApiPricingPricing;
+      'api::product-iclean-mini-page.product-iclean-mini-page': ApiProductIcleanMiniPageProductIcleanMiniPage;
+      'api::product-pro-v9-page.product-pro-v9-page': ApiProductProV9PageProductProV9Page;
       'api::product.product': ApiProductProduct;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
+      'api::training-service-page.training-service-page': ApiTrainingServicePageTrainingServicePage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

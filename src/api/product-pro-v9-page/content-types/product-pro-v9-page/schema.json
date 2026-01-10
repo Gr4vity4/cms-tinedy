@@ -1,0 +1,145 @@
+{
+  "kind": "singleType",
+  "collectionName": "product_pro_v9_pages",
+  "info": {
+    "singularName": "product-pro-v9-page",
+    "pluralName": "product-pro-v9-pages",
+    "displayName": "Product PRO V9 Page",
+    "description": "Landing page content for Tersano lotus PRO V9"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroTitle": {
+      "type": "string",
+      "required": true
+    },
+    "heroSubtitle": {
+      "type": "text",
+      "required": true
+    },
+    "heroHighlight": {
+      "type": "string",
+      "required": true
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "heroOverlay": {
+      "type": "boolean",
+      "default": true
+    },
+    "featureEyebrow": {
+      "type": "string",
+      "required": true
+    },
+    "featureHeading": {
+      "type": "string",
+      "required": true
+    },
+    "featureDescription": {
+      "type": "richtext",
+      "required": true
+    },
+    "featureCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product-landing.feature-card",
+      "required": true
+    },
+    "dashboardImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "dashboardHeading": {
+      "type": "string",
+      "required": true
+    },
+    "dashboardDescription": {
+      "type": "richtext",
+      "required": true
+    },
+    "cartridgesHeading": {
+      "type": "string",
+      "required": true
+    },
+    "cartridgesDescription": {
+      "type": "text",
+      "required": true
+    },
+    "cartridgesLinkLabel": {
+      "type": "string"
+    },
+    "cartridgesLinkUrl": {
+      "type": "string"
+    },
+    "cartridgeProducts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product"
+    },
+    "technicalSpecsHeading": {
+      "type": "string",
+      "required": true
+    },
+    "technicalSpecsImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "technicalSpecsTableTitle": {
+      "type": "string",
+      "required": true
+    },
+    "technicalSpecsRows": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product-landing.table-row",
+      "required": true
+    },
+    "reasonsHeading": {
+      "type": "string",
+      "required": true
+    },
+    "reasons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product-landing.reason-item",
+      "required": true
+    },
+    "certificationBackgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "certificationSealImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "certificationHeading": {
+      "type": "string",
+      "required": true
+    },
+    "certificationIntro": {
+      "type": "text",
+      "required": true
+    },
+    "certificationStandards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product-landing.standard-item",
+      "required": true
+    }
+  }
+}

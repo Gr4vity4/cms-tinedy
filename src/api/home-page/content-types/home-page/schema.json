@@ -29,6 +29,32 @@
       "repeatable": false,
       "component": "home.tersano",
       "required": true
+    },
+    "featuredProductsHeading": {
+      "type": "string",
+      "required": true
+    },
+    "featuredProductsLinkLabel": {
+      "type": "string"
+    },
+    "featuredProductsLinkUrl": {
+      "type": "string"
+    },
+    "recommendedProductsHeading": {
+      "type": "string",
+      "required": true
+    },
+    "recommendedProductsLinkLabel": {
+      "type": "string"
+    },
+    "recommendedProductsLinkUrl": {
+      "type": "string"
+    },
+    "bookingBanner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "home.booking-banner",
+      "required": true
     }
   }
 }

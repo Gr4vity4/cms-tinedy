@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_product_landing_spec_items",
+  "info": {
+    "displayName": "Spec Item",
+    "icon": "list",
+    "description": "Technical spec item with icon"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "enumeration",
+      "enum": ["battery", "spray", "filter", "faucet", "badge", "safety"],
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "underlineValue": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

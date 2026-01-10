@@ -1,0 +1,104 @@
+{
+  "kind": "singleType",
+  "collectionName": "cleaning_service_pages",
+  "info": {
+    "singularName": "cleaning-service-page",
+    "pluralName": "cleaning-service-pages",
+    "displayName": "Cleaning Service Page",
+    "description": "Cleaning service page content"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroTitle": {
+      "type": "string",
+      "required": true
+    },
+    "heroSubtitle": {
+      "type": "text",
+      "required": true
+    },
+    "heroDescription": {
+      "type": "richtext",
+      "required": true
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "productQualityHeading": {
+      "type": "string",
+      "required": true
+    },
+    "productQualityIntro": {
+      "type": "text",
+      "required": true
+    },
+    "productQualityCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service.card",
+      "required": true
+    },
+    "tersanoHeading": {
+      "type": "string",
+      "required": true
+    },
+    "tersanoCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service.card",
+      "required": true
+    },
+    "quoteBannerOne": {
+      "type": "component",
+      "repeatable": false,
+      "component": "service.quote-banner",
+      "required": true
+    },
+    "teamHeading": {
+      "type": "string",
+      "required": true
+    },
+    "teamIntro": {
+      "type": "text",
+      "required": true
+    },
+    "teamCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service.card",
+      "required": true
+    },
+    "quoteBannerTwo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "service.quote-banner",
+      "required": true
+    },
+    "bookingHeading": {
+      "type": "string",
+      "required": true
+    },
+    "bookingSubheading": {
+      "type": "text",
+      "required": true
+    },
+    "bookingReasons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service.reason-item",
+      "required": true
+    },
+    "bookingBanner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "service.cta-banner",
+      "required": true
+    }
+  }
+}

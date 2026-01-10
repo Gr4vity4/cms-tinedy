@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_service_quote_banners",
+  "info": {
+    "displayName": "Quote Banner",
+    "icon": "quote-left",
+    "description": "Full-width banner with background image and overlay text"
+  },
+  "options": {},
+  "attributes": {
+    "backgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "kind": "singleType",
+  "collectionName": "product_iclean_mini_pages",
+  "info": {
+    "singularName": "product-iclean-mini-page",
+    "pluralName": "product-iclean-mini-pages",
+    "displayName": "Product iClean Mini Page",
+    "description": "Landing page content for Tersano iClean mini"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroTitle": {
+      "type": "string",
+      "required": true
+    },
+    "heroSubtitle": {
+      "type": "text",
+      "required": true
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "featureEyebrow": {
+      "type": "string",
+      "required": true
+    },
+    "featureHeading": {
+      "type": "string",
+      "required": true
+    },
+    "featureDescription": {
+      "type": "richtext",
+      "required": true
+    },
+    "featureCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product-landing.feature-card",
+      "required": true
+    },
+    "technicalSpecsHeading": {
+      "type": "string",
+      "required": true
+    },
+    "technicalSpecs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product-landing.spec-item",
+      "required": true
+    },
+    "certificationBackgroundImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "certificationHeading": {
+      "type": "string",
+      "required": true
+    },
+    "certificationIntro": {
+      "type": "text",
+      "required": true
+    },
+    "certificationStandards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product-landing.standard-item",
+      "required": true
+    }
+  }
+}
