@@ -100,6 +100,16 @@ function getFileData(fileName) {
   };
 }
 
+function toSlug(value) {
+  return String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/['’]/g, '')
+    .replace(/[^\p{L}\p{N}\p{M}]+/gu, '-')
+    .replace(/^-+|-+$/g, '')
+    .replace(/-{2,}/g, '-');
+}
+
 async function uploadFile(file, name) {
   return strapi
     .plugin('upload')
@@ -499,9 +509,11 @@ async function importProducts() {
     const images = product.images?.length
       ? await checkFileExistsBeforeUpload(product.images)
       : undefined;
+    const slug = product.slug || toSlug(product.title) || toSlug(product.sku) || product.sku;
 
     const entry = {
       ...product,
+      slug,
       thumbnail,
       // Make sure it's not a draft
       publishedAt: Date.now(),
