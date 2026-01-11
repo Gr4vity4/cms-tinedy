@@ -24,34 +24,52 @@ const {
   testimonials,
 } = require('../data/data.json');
 
-async function seedExampleApp() {
-  const shouldImportSeedData = await isFirstRun();
+const seedIdMaps = {
+  categories: [],
+  authors: [],
+  jobOpenings: [],
+};
 
-  if (shouldImportSeedData) {
-    try {
-      console.log('Setting up the template...');
-      await importSeedData();
-      console.log('Ready to go');
-    } catch (error) {
-      console.log('Could not import seed data');
-      console.error(error);
-    }
-  } else {
-    console.log(
-      'Seed data has already been imported. We cannot reimport unless you clear your database first.'
-    );
+async function seedExampleApp() {
+  try {
+    console.log('Clearing existing data...');
+    await clearDatabase();
+    await setSeedState(false);
+
+    console.log('Setting up the template...');
+    await importSeedData();
+    await setSeedState(true);
+    console.log('Ready to go');
+  } catch (error) {
+    console.log('Could not import seed data');
+    console.error(error);
   }
 }
 
-async function isFirstRun() {
+async function setSeedState(hasRun) {
   const pluginStore = strapi.store({
     environment: strapi.config.environment,
     type: 'type',
     name: 'setup',
   });
-  const initHasRun = await pluginStore.get({ key: 'initHasRun' });
-  await pluginStore.set({ key: 'initHasRun', value: true });
-  return !initHasRun;
+  await pluginStore.set({ key: 'initHasRun', value: hasRun });
+}
+
+async function clearDatabase() {
+  const contentTypeUids = Object.keys(strapi.contentTypes).filter((uid) =>
+    uid.startsWith('api::')
+  );
+
+  for (const uid of contentTypeUids) {
+    await strapi.db.query(uid).deleteMany({ where: {} });
+  }
+
+  const uploadUids = ['plugin::upload.file', 'plugin::upload.folder'];
+  for (const uid of uploadUids) {
+    if (strapi.contentTypes[uid]) {
+      await strapi.db.query(uid).deleteMany({ where: {} });
+    }
+  }
 }
 
 async function setPublicPermissions(newPermissions) {
@@ -62,20 +80,35 @@ async function setPublicPermissions(newPermissions) {
     },
   });
 
-  // Create the new permissions and link them to the public role
+  const actionNames = [];
   const allPermissionsToCreate = [];
   Object.keys(newPermissions).map((controller) => {
     const actions = newPermissions[controller];
     const permissionsToCreate = actions.map((action) => {
+      const actionName = `api::${controller}.${controller}.${action}`;
+      actionNames.push(actionName);
       return strapi.query('plugin::users-permissions.permission').create({
         data: {
-          action: `api::${controller}.${controller}.${action}`,
+          action: actionName,
           role: publicRole.id,
         },
       });
     });
     allPermissionsToCreate.push(...permissionsToCreate);
   });
+
+  if (actionNames.length) {
+    await strapi.db.query('plugin::users-permissions.permission').deleteMany({
+      where: {
+        role: publicRole.id,
+        action: {
+          $in: actionNames,
+        },
+      },
+    });
+  }
+
+  // Create the new permissions and link them to the public role
   await Promise.all(allPermissionsToCreate);
 }
 
@@ -105,9 +138,23 @@ function toSlug(value) {
     .trim()
     .toLowerCase()
     .replace(/['’]/g, '')
-    .replace(/[^\p{L}\p{N}\p{M}]+/gu, '-')
+    .replace(/[^a-z0-9-_.~]+/g, '-')
     .replace(/^-+|-+$/g, '')
     .replace(/-{2,}/g, '-');
+}
+
+function resolveSeedRelation(seedRelation, idMap, label) {
+  if (!seedRelation || typeof seedRelation.id !== 'number') {
+    return seedRelation;
+  }
+
+  const resolvedId = idMap[seedRelation.id];
+  if (!resolvedId) {
+    console.warn(`Missing ${label} for seed id ${seedRelation.id}`);
+    return undefined;
+  }
+
+  return { id: resolvedId };
 }
 
 async function uploadFile(file, name) {
@@ -130,11 +177,12 @@ async function uploadFile(file, name) {
 async function createEntry({ model, entry }) {
   try {
     // Actually create the entry in Strapi
-    await strapi.documents(`api::${model}.${model}`).create({
+    return await strapi.documents(`api::${model}.${model}`).create({
       data: entry,
     });
   } catch (error) {
     console.error({ model, entry, error });
+    return null;
   }
 }
 
@@ -221,13 +269,18 @@ async function updateBlocks(blocks) {
 
 async function importArticles() {
   for (const article of articles) {
+    const { category: seedCategory, author: seedAuthor, ...articleData } = article;
     const cover = await checkFileExistsBeforeUpload([`${article.slug}.jpg`]);
     const updatedBlocks = await updateBlocks(article.blocks);
+    const category = resolveSeedRelation(seedCategory, seedIdMaps.categories, 'category');
+    const author = resolveSeedRelation(seedAuthor, seedIdMaps.authors, 'author');
 
     await createEntry({
       model: 'article',
       entry: {
-        ...article,
+        ...articleData,
+        ...(category ? { category } : {}),
+        ...(author ? { author } : {}),
         cover,
         blocks: updatedBlocks,
         // Make sure it's not a draft
@@ -243,13 +296,18 @@ async function importBlogs() {
   }
 
   for (const blog of blogs) {
+    const { category: seedCategory, author: seedAuthor, ...blogData } = blog;
     const updatedContent = blog.content ? await updateBlocks(blog.content) : undefined;
     const coverImage = blog.coverImage
       ? await checkFileExistsBeforeUpload([blog.coverImage])
       : undefined;
+    const category = resolveSeedRelation(seedCategory, seedIdMaps.categories, 'category');
+    const author = resolveSeedRelation(seedAuthor, seedIdMaps.authors, 'author');
 
     const entry = {
-      ...blog,
+      ...blogData,
+      ...(category ? { category } : {}),
+      ...(author ? { author } : {}),
       // Make sure it's not a draft
       publishedAt: Date.now(),
     };
@@ -409,11 +467,15 @@ async function importJobOpenings() {
     return;
   }
 
-  for (const opening of jobOpenings) {
-    await createEntry({
+  for (let index = 0; index < jobOpenings.length; index += 1) {
+    const opening = jobOpenings[index];
+    const created = await createEntry({
       model: 'job-opening',
       entry: opening,
     });
+    if (created?.id) {
+      seedIdMaps.jobOpenings[index + 1] = created.id;
+    }
   }
 }
 
@@ -423,11 +485,19 @@ async function importJobApplications() {
   }
 
   for (const application of jobApplications) {
+    const { job: seedJob, ...applicationData } = application;
     const resume = await checkFileExistsBeforeUpload([application.resume]);
+    const job = resolveSeedRelation(
+      seedJob,
+      seedIdMaps.jobOpenings,
+      'job-opening'
+    );
+
     await createEntry({
       model: 'job-application',
       entry: {
-        ...application,
+        ...applicationData,
+        ...(job ? { job } : {}),
         resume,
       },
     });
@@ -528,22 +598,30 @@ async function importProducts() {
 }
 
 async function importCategories() {
-  for (const category of categories) {
-    await createEntry({ model: 'category', entry: category });
+  for (let index = 0; index < categories.length; index += 1) {
+    const category = categories[index];
+    const created = await createEntry({ model: 'category', entry: category });
+    if (created?.id) {
+      seedIdMaps.categories[index + 1] = created.id;
+    }
   }
 }
 
 async function importAuthors() {
-  for (const author of authors) {
+  for (let index = 0; index < authors.length; index += 1) {
+    const author = authors[index];
     const avatar = await checkFileExistsBeforeUpload([author.avatar]);
 
-    await createEntry({
+    const created = await createEntry({
       model: 'author',
       entry: {
         ...author,
         avatar,
       },
     });
+    if (created?.id) {
+      seedIdMaps.authors[index + 1] = created.id;
+    }
   }
 }
 
